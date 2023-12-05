@@ -14,7 +14,6 @@
             Console.WriteLine("Merhabalar bu bir sorudur..");
             await _next.Invoke(context);
             Console.WriteLine("Merhabalar bu bir cevaptır.");
-
         }
     }
 }
