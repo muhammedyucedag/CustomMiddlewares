@@ -9,7 +9,7 @@
 
         public static IApplicationBuilder UseExcepitonHandler(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<HelloMiddleware>();
+            return app.UseMiddleware<ExceptionHandlerMiddleware>();
         }
     }
 }
