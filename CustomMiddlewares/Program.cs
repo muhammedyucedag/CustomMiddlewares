@@ -2,6 +2,9 @@ using CustomMiddlewares;
 using CustomMiddlewares.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddDebug();
+builder.Logging.AddConsole();
 
 // Add services to the container.
 
@@ -21,6 +24,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHelloChecker();
+app.UseExcepitonHandler();
+app.UseRequestResponseMiddleware();
 
 app.UseHttpsRedirection();
 
