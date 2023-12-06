@@ -3,15 +3,26 @@
     public class ExceptionHandlerMiddleware
     {
         private readonly RequestDelegate next;
+        private readonly ILogger<ExceptionHandlerMiddleware> logger;
 
-        public ExceptionHandlerMiddleware(RequestDelegate Next)
+        public ExceptionHandlerMiddleware(RequestDelegate Next, ILogger<ExceptionHandlerMiddleware> Logger)
         {
             next = Next;
+            logger = Logger;
         }
 
         public async Task Invoke(HttpContext httpContext)
         {
-            await next.Invoke(httpContext);
+            try
+            {
+                await next.Invoke(httpContext);
+            }
+            catch (Exception ex)
+            {
+                // Hata yönetimi
+                logger.LogError(ex.Message);
+            }
         }
     }
 }
+    

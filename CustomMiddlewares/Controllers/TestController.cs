@@ -1,15 +1,18 @@
+ï»¿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomMiddlewares.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class TestController : ControllerBase
     {
         [HttpGet]
         public String Get()
         {
-            throw new Exception("Test Hatasý");
+            int a = 0;
+            int b = 10 / a;
+
             return "OK";
         }
     }
